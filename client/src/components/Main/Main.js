@@ -1,5 +1,6 @@
 // import {Fragment} from 'react';
 
+import Post from '../Post/Post.js';
 import './Main.css';
 
 const Main = ({
@@ -10,9 +11,16 @@ const Main = ({
         <main className="main-container">
             <h1>Sooome Heading</h1>
 
-            {posts.map(x => 
-                <p>{x.content}</p>
-            )}
+            <div className="posts">
+
+                {posts.map(x =>
+                    <Post
+                        key={x._id}
+                        content={x.content}
+                        author={x.author}
+                    />
+                )}
+            </div>
         </main>
     );
 };
