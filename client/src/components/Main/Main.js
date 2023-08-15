@@ -1,14 +1,18 @@
-import {Fragment} from 'react';
+// import {Fragment} from 'react';
 
 import './Main.css';
 
-const Main = () => {
+const Main = ({
+    posts
+}) => {
+    console.log(posts);
     return (
-        <main className='main-container'>
-
+        <main className="main-container">
             <h1>Sooome Heading</h1>
 
-            <p>Some posts</p>
+            {posts.map(x => 
+                <p>{x.content}</p>
+            )}
         </main>
     );
 };
