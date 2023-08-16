@@ -14,15 +14,32 @@ class App extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      posts: [],
+      selectedPost: null,
     };
+   
+    this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }
 
   componentDidMount() {
     postService.getAll()
       .then(posts => {
+        console.log('postove-' + posts);
         this.setState({posts});
     });
+  }
+
+  onMenuItemClick(id) {
+    this.setState({selectedPost: id});
+  }
+
+  getPosts() {
+    if (!this.state.selectedPost) {
+      return this.state.posts;
+    } else {
+      let result = [this.state.posts.find(x => x.id === this.state.selectedPost)];
+      return result;
+    }
   }
 
   render() {
@@ -31,9 +48,9 @@ class App extends Component {
         <Header />
 
         <div className={style.container}>
-          <Menu />
+          <Menu onMenuItemClick={this.onMenuItemClick} />
 
-          <Main posts={this.state.posts} />
+          <Main posts={this.getPosts()} />
         </div>
       </div>
     );
