@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Route, Link, NavLink, Redirect, Switch } from 'react-router-dom';
 
 import * as postService from './services/postService.js';
 // import { getAll } from './services/postService.js';
@@ -17,7 +18,7 @@ class App extends Component {
       posts: [],
       selectedPost: null,
     };
-   
+
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
   }
 
@@ -25,12 +26,12 @@ class App extends Component {
     postService.getAll()
       .then(posts => {
         console.log('postove-' + posts);
-        this.setState({posts});
-    });
+        this.setState({ posts });
+      });
   }
 
   onMenuItemClick(id) {
-    this.setState({selectedPost: id});
+    this.setState({ selectedPost: id });
   }
 
   getPosts() {
