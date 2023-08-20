@@ -56,7 +56,7 @@ class App extends Component {
                     <Routes>
                         <Route path="/about" element={<About />} />
                         <Route path='/contact-us' element={<ContactUs />} />
-                        <Route path='/' element={<Main posts={this.getPosts()} />} />
+                        <Route path='/' exact element={<Main posts={this.getPosts()} />} />
                     </Routes>
                 </div>
             </div>
