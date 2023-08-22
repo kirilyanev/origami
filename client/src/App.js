@@ -27,7 +27,6 @@ class App extends Component {
     componentDidMount() {
         postService.getAll()
             .then(posts => {
-                console.log('postove-' + posts);
                 this.setState({ posts });
             });
     }
@@ -54,7 +53,8 @@ class App extends Component {
                     <Menu onMenuItemClick={this.onMenuItemClick} />
 
                     <Routes>
-                        <Route path="/about" element={<About />} />
+                        <Route path="/about/" element={<About />} />
+                        <Route path="/about/:name" element={<About />} />
                         <Route path='/contact-us' element={<ContactUs />} />
                         <Route path='/' exact element={<Main posts={this.getPosts()} />} />
                     </Routes>
