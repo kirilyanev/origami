@@ -1,9 +1,9 @@
-import { useLocation, useNavigate, useParams, Route, Routes } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const About = () => {
     const params = useParams();
     const pathname = useLocation().pathname;
-    
+
     return (
         <main className="main-container">
             <h1>About {params.name} Page</h1>
